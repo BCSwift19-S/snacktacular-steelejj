@@ -353,6 +353,11 @@
                                         <connections>
                                             <outlet property="reviewTextLabel" destination="Eel-OE-mSk" id="Chf-K1-ixF"/>
                                             <outlet property="reviewTitleLabel" destination="J1Z-ix-Pxw" id="7oR-mx-Msu"/>
+                                            <outletCollection property="starImageCollection" destination="Su3-Y3-Zig" collectionClass="NSMutableArray" id="wCM-3w-E34"/>
+                                            <outletCollection property="starImageCollection" destination="Dh5-N5-IJ1" collectionClass="NSMutableArray" id="kp2-Hr-G9s"/>
+                                            <outletCollection property="starImageCollection" destination="7LK-bk-5gT" collectionClass="NSMutableArray" id="nL8-1h-lM8"/>
+                                            <outletCollection property="starImageCollection" destination="6wM-Ie-Ux4" collectionClass="NSMutableArray" id="5VZ-9S-jhX"/>
+                                            <outletCollection property="starImageCollection" destination="7pW-wt-2M2" collectionClass="NSMutableArray" id="Si7-Lj-Xkc"/>
                                             <segue destination="XjN-fl-6Ea" kind="show" id="lph-v4-u7x"/>
                                         </connections>
                                     </tableViewCell>
@@ -446,46 +451,61 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="75.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Click To Rate:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qOS-BZ-zxh">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Click To Rate:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qOS-BZ-zxh">
                                                     <rect key="frame" x="141" y="0.0" width="93" height="24"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b4k-FR-gdj">
-                                                    <rect key="frame" x="46" y="25" width="272" height="60"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="PZv-jc-6fc">
+                                                    <rect key="frame" x="66" y="45" width="216" height="40"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UBn-xj-84H">
-                                                            <rect key="frame" x="20" y="20" width="40" height="40"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        <button opaque="NO" tag="1" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1i-jO-pWB">
+                                                            <rect key="frame" x="0.0" y="0.0" width="41.666666666666664" height="40"/>
                                                             <state key="normal" title="Button" image="star-empty"/>
+                                                            <connections>
+                                                                <action selector="starButtonPressed:" destination="XjN-fl-6Ea" eventType="touchUpInside" id="oP3-oW-CIH"/>
+                                                            </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1i-jO-pWB">
-                                                            <rect key="frame" x="68" y="20" width="40" height="40"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        <button opaque="NO" tag="2" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lCI-us-dfG">
+                                                            <rect key="frame" x="43.666666666666671" y="0.0" width="41.666666666666671" height="40"/>
                                                             <state key="normal" title="Button" image="star-empty"/>
+                                                            <connections>
+                                                                <action selector="starButtonPressed:" destination="XjN-fl-6Ea" eventType="touchUpInside" id="fcn-Ze-pX5"/>
+                                                            </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lCI-us-dfG">
-                                                            <rect key="frame" x="116" y="20" width="40" height="40"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        <button opaque="NO" tag="3" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lHb-e5-O88">
+                                                            <rect key="frame" x="87.333333333333329" y="0.0" width="41.333333333333329" height="40"/>
                                                             <state key="normal" title="Button" image="star-empty"/>
+                                                            <connections>
+                                                                <action selector="starButtonPressed:" destination="XjN-fl-6Ea" eventType="touchUpInside" id="7Nf-j4-yQ1"/>
+                                                            </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lHb-e5-O88">
-                                                            <rect key="frame" x="164" y="20" width="40" height="40"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        <button opaque="NO" tag="4" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qTl-Ei-01A">
+                                                            <rect key="frame" x="130.66666666666666" y="0.0" width="41.666666666666657" height="40"/>
                                                             <state key="normal" title="Button" image="star-empty"/>
+                                                            <connections>
+                                                                <action selector="starButtonPressed:" destination="XjN-fl-6Ea" eventType="touchUpInside" id="MI9-wA-0we"/>
+                                                            </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qTl-Ei-01A">
-                                                            <rect key="frame" x="212" y="20" width="40" height="40"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UBn-xj-84H">
+                                                            <rect key="frame" x="174.33333333333334" y="0.0" width="41.666666666666657" height="40"/>
                                                             <state key="normal" title="Button" image="star-empty"/>
+                                                            <connections>
+                                                                <action selector="starButtonPressed:" destination="XjN-fl-6Ea" eventType="touchUpInside" id="pXi-ho-Jqo"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </view>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="216" id="TyJ-iK-oqq"/>
+                                                        <constraint firstAttribute="height" constant="40" id="qqU-jO-bJH"/>
+                                                        <constraint firstItem="lHb-e5-O88" firstAttribute="centerX" secondItem="PZv-jc-6fc" secondAttribute="centerX" id="tvo-AN-VAB"/>
+                                                    </constraints>
+                                                </stackView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="PZv-jc-6fc" firstAttribute="top" secondItem="qOS-BZ-zxh" secondAttribute="bottom" constant="22" id="HWG-9R-0Wk"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="sDR-LZ-lVa">
@@ -591,7 +611,6 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addressLabel" destination="xpE-eM-mF8" id="iiU-W5-fdS"/>
-                        <outlet property="buttonsBackgroundView" destination="b4k-FR-gdj" id="a5D-wo-Oa5"/>
                         <outlet property="canvelBarButton" destination="DSm-0I-r1v" id="eoV-f9-Zjl"/>
                         <outlet property="deleteButton" destination="p7v-yw-EsY" id="Gje-KX-NGE"/>
                         <outlet property="nameLabel" destination="Dh3-Wt-M44" id="aYc-rm-ff2"/>
@@ -600,6 +619,11 @@
                         <outlet property="reviewTitle" destination="buE-Tv-rlI" id="fw5-lp-EEZ"/>
                         <outlet property="reviewView" destination="NaW-4e-t1c" id="DVd-P3-NTb"/>
                         <outlet property="saveBarButton" destination="asD-Md-aX9" id="LTd-Ra-w39"/>
+                        <outletCollection property="starButtonCollectoin" destination="UBn-xj-84H" collectionClass="NSMutableArray" id="RZf-Xb-eEi"/>
+                        <outletCollection property="starButtonCollectoin" destination="T1i-jO-pWB" collectionClass="NSMutableArray" id="Vzw-t0-L7r"/>
+                        <outletCollection property="starButtonCollectoin" destination="lCI-us-dfG" collectionClass="NSMutableArray" id="dCY-KB-Wav"/>
+                        <outletCollection property="starButtonCollectoin" destination="lHb-e5-O88" collectionClass="NSMutableArray" id="iM1-WB-ODa"/>
+                        <outletCollection property="starButtonCollectoin" destination="qTl-Ei-01A" collectionClass="NSMutableArray" id="rfd-Hl-hod"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fcp-0Q-l9i" userLabel="First Responder" sceneMemberID="firstResponder"/>

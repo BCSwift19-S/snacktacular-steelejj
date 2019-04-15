@@ -1,0 +1,36 @@
+//
+//  Reviews.swift
+//  Snacktacular
+//
+//  Created by James Steele on 4/15/19.
+//  Copyright © 2019 John Gallaugher. All rights reserved.
+//
+
+import Foundation
+import Firebase
+
+class Reviews {
+    var reviewArray: [Review] = []
+    var db: Firestore!
+    
+    init() {
+        db = Firestore.firestore()
+    }
+    
+    func loadData(spot: Spot, completed: @escaping () -> ()) {
+
+    db.collection("spots").document(spot.documentID).collection("reviews").addSnapshotListener { (QuerySnapshot, error) in
+            guard error == nil else {
+                print("error: adding the snapshot listener")
+                return completed()
+            }
+            self.reviewArray = []
+            for document in QuerySnapshot!.documents {
+                let review =  Review(dictionary: document.data())
+                review.documentID = document.documentID
+                self.reviewArray.append(spot)
+            }
+            completed()
+    
+}
+}
