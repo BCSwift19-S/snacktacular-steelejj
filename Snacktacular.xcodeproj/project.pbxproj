@@ -21,6 +21,7 @@
 		AFFD10192251676E000CADD5 /* Spots.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFD10182251676E000CADD5 /* Spots.swift */; };
 		C22F9392054B897AA6CFF760 /* Pods_Snacktacular.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B46FBF79337751A8FC19FE9 /* Pods_Snacktacular.framework */; };
 		DA4D04D82264DC7B00B71DF7 /* Double+roundTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4D04D72264DC7B00B71DF7 /* Double+roundTo.swift */; };
+		DA4D04DA2264DF5400B71DF7 /* UIView+addBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4D04D92264DF5400B71DF7 /* UIView+addBorder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		AFFD10182251676E000CADD5 /* Spots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spots.swift; sourceTree = "<group>"; };
 		D5D12F3BDEF0B2D3BF75225D /* Pods-Snacktacular.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Snacktacular.release.xcconfig"; path = "Target Support Files/Pods-Snacktacular/Pods-Snacktacular.release.xcconfig"; sourceTree = "<group>"; };
 		DA4D04D72264DC7B00B71DF7 /* Double+roundTo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+roundTo.swift"; sourceTree = "<group>"; };
+		DA4D04D92264DF5400B71DF7 /* UIView+addBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+addBorder.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				3E0F960D2065AB6400AE450D /* SpotReviewsTableViewCell.swift */,
 				3E0F960F2065AC1A00AE450D /* SpotPhotosCollectionViewCell.swift */,
 				DA4D04D72264DC7B00B71DF7 /* Double+roundTo.swift */,
+				DA4D04D92264DF5400B71DF7 /* UIView+addBorder.swift */,
 				3E8390E3206597F600512DEA /* Main.storyboard */,
 				3E8390E6206597F600512DEA /* Assets.xcassets */,
 				3E8390E8206597F600512DEA /* LaunchScreen.storyboard */,
@@ -311,6 +314,7 @@
 				3E0F96102065AC1A00AE450D /* SpotPhotosCollectionViewCell.swift in Sources */,
 				3E0F960C2065A17500AE450D /* SpotDetailViewController.swift in Sources */,
 				3E0F960E2065AB6400AE450D /* SpotReviewsTableViewCell.swift in Sources */,
+				DA4D04DA2264DF5400B71DF7 /* UIView+addBorder.swift in Sources */,
 				3E0F960A20659D9000AE450D /* SpotsTableViewCell.swift in Sources */,
 				AFFD1017225165F4000CADD5 /* Spot.swift in Sources */,
 				3E8390E0206597F600512DEA /* AppDelegate.swift in Sources */,

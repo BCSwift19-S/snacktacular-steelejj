@@ -19,6 +19,8 @@ class SpotDetailViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var saveBarButton: UIBarButtonItem!
+    @IBOutlet weak var cancelBarButton: UIBarButtonItem!
     
     
     var spot: Spot!
@@ -30,11 +32,26 @@ class SpotDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
+        
 //        mapView.delegate = self
         
         if spot == nil {
             spot = Spot()
             getLocation()
+            
+            nameField.addBorder(width: 0.5, radius: 5.0, color: .black)
+            addressField.addBorder(width: 0.5, radius: 5.0, color: .black)
+        } else {
+            nameField.isEnabled = false
+            addressField.isEnabled = false
+            nameField.backgroundColor = UIColor.clear
+            addressField.backgroundColor = UIColor.white
+            saveBarButton.title = ""
+            cancelBarButton.title = ""
+            navigationController?.setToolbarHidden(true, animated: true)
         }
         
         
@@ -42,6 +59,17 @@ class SpotDetailViewController: UIViewController {
         mapView.setRegion(region, animated: true)
         updateUserInterFace()
     }
+    
+    @IBAction func textFieldEditingChanged(_ sender: UITextField) {
+        saveBarButton.isEnabled = !(nameField.text == "")
+    }
+    
+    @IBAction func textFieldReturnPressed(_ sender: UITextField) {
+        sender.resignFirstResponder()
+        spot.name = nameField.text!
+        spot.address = addressField.text!
+    }
+    
     
     func showAlertToPrivacySettings(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
