@@ -88,7 +88,7 @@ class SpotDetailViewController: UIViewController {
     
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
         spot.name = nameField.text!
-        sport.address = addressField.text!
+        spot.address = addressField.text!
         spot.saveData { success in
             if success {
                 self.leaveViewController()
@@ -211,4 +211,6 @@ extension SpotDetailViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Failed to get user location.")
     }
+    
 }
+

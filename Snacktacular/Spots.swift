@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 
 class Spots {
+    
     var spotArray = [Spot]()
     var db: Firestore!
     
