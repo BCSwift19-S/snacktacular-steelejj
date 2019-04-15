@@ -24,6 +24,7 @@ class SpotDetailViewController: UIViewController {
     
     var reviews: Reviews!
     var spot: Spot!
+    var photos: Photos!
     let regionDistance: CLLocationDistance = 750 //750 meters
     var locationManager: CLLocationManager!
     var currentLocation: CLLocation!
@@ -41,6 +42,8 @@ class SpotDetailViewController: UIViewController {
 //        mapView.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
         if spot == nil {
             spot = Spot()
@@ -126,6 +129,17 @@ class SpotDetailViewController: UIViewController {
         nameField.text = spot.name
         addressField.text = spot.address
         
+    }
+    
+    func cameraOrLibraryAlert() {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let cameraAction = UIAlertAction(title: "Camera", style: .default, handler: nil)
+        let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cameraAction)
+        alertController.addAction(photoLibraryAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
     }
     
     func updateMap() {
@@ -294,3 +308,13 @@ extension SpotDetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+extension SpotDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return photos.photoAray.count
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! SpotPhotosCollectionViewCell
+        cell.photo = photos.photoAray[indexPath.row]
+        return cell
+    }
+}
