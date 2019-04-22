@@ -28,9 +28,9 @@ class Reviews {
             for document in QuerySnapshot!.documents {
                 let review =  Review(dictionary: document.data())
                 review.documentID = document.documentID
-                self.reviewArray.append(spot)
+                self.reviewArray.append(review)
             }
             completed()
-    
-}
+        }
+    }
 }

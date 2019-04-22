@@ -44,27 +44,36 @@ class Review {
         self.init(title: "", text: "", rating: 0, reviewerUserID: currentUserID, date: Date(), documentID: "")
     }
     
-    func saveData(spot: Spot, completion: @escaping (Bool) -> ()) {
+    func saveData(spot: Spot, completed: @escaping (Bool) -> ()) {
         let db = Firestore.firestore()
+        
+        // Create the dictionary representing the data we want to save
         let dataToSave = self.dictionary
+        // if we HAVE saved a record, we'll have a documentID
         if self.documentID != "" {
-            let ref = db.collection("spots").document(spot.documentID).collection("review").document()self.documentID)
+            let ref = db.collection("spots").document(spot.documentID).collection("reviews").document(self.documentID)
             ref.setData(dataToSave) { (error) in
                 if let error = error {
-                    print("error updating document")
-                    return completion(false)
+                    print("*** ERROR: updating document \(self.documentID) in spot \(spot.documentID) \(error.localizedDescription)")
+                    completed(false)
                 } else {
-                    completion(true)
+                    print("^^^ Document updated with ref ID \(ref.documentID)")
+                    spot.updateAverageRating {
+                        completed(true)
+                    }
                 }
             }
         } else {
-            var ref: DocumentReference? = nil
-            ref = db.collection("spots").document(spot.documentID).addDocument(data: dataToSave) {error in
+            var ref: DocumentReference? = nil // Let firestore create the new documentID
+            ref = db.collection("spots").document(spot.documentID).collection("reviews").addDocument(data: dataToSave) { error in
                 if let error = error {
-                    print("error updating document \(self.documentID) \(error.localizedDescription)")
-                    return completion(false)
+                    print("*** ERROR: creating new document in spot \(spot.documentID) for new review documentID \(error.localizedDescription)")
+                    completed(false)
                 } else {
-                    completion(true)
+                    print("^^^ new document created with ref ID \(ref?.documentID ?? "unknown")")
+                    spot.updateAverageRating {
+                        completed(true)
+                    }
                 }
             }
         }
